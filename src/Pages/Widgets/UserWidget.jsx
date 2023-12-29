@@ -78,7 +78,7 @@ const UserWidget = ({ userId }) => {
             <Typography color={medium}>{friends.length} friends</Typography>
           </Box>
         </FlexBetween>
-        <ManageAccountsOutlined />
+        <ManageAccountsOutlined sx={{ color: main }}/>
       </FlexBetween>
       <Divider />
       {/* SECOND ROW */}
@@ -124,7 +124,7 @@ const UserWidget = ({ userId }) => {
               <Typography color={medium}>Social Network</Typography>
             </Box>
           </FlexBetween>
-          <EditOutlined color={main} />
+          <EditOutlined sx={{ color: main }} />
         </FlexBetween>
         <FlexBetween>
           <FlexBetween gap={"1rem"}>
@@ -136,7 +136,7 @@ const UserWidget = ({ userId }) => {
               <Typography color={medium}>Network Platform</Typography>
             </Box>
           </FlexBetween>
-          <EditOutlined color={main} />
+          <EditOutlined sx={{ color: main }} />
         </FlexBetween>
       </Box>
     </WidgetWrapper>
