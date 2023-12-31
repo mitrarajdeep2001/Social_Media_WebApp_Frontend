@@ -1,12 +1,13 @@
 import { setPosts } from "Redux-Toolkit/Slices/auth";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import PostWidget from "./PostWidget";
 
 const PostsWidget = ({ userId, isProfile = false }) => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts);
   const getPosts = async () => {
-    const response = await fetch("api", {
+    const response = await fetch(`http://localhost:3001/post`, {
       method: "GET",
       credentials: "include",
     });
@@ -14,7 +15,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
     dispatch(setPosts({ posts: data }));
   };
   const getUserPosts = async () => {
-    const response = await fetch("api", {
+    const response = await fetch(`http://localhost:3001/post/${userId}`, {
       method: "GET",
       credentials: "include",
     });
@@ -44,10 +45,10 @@ const PostsWidget = ({ userId, isProfile = false }) => {
           likes,
           comments,
         }) => (
-          <PostsWidget
+          <PostWidget
             key={_id}
-            _id={_id}
-            userId={userId}
+            postId={_id}
+            postUserId={userId}
             name={`${firstName} ${lastName}`}
             description={description}
             location={location}

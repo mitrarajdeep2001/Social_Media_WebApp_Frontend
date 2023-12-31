@@ -1,6 +1,9 @@
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import Navbar from "Pages/Navbar/Navbar";
+import AdvertisementWidget from "Pages/Widgets/AdvertisementWidget";
+import FriendListWidget from "Pages/Widgets/FriendListWidget";
 import MyPostWidget from "Pages/Widgets/MyPostWidget";
+import PostsWidget from "Pages/Widgets/PostsWidget";
 import UserWidget from "Pages/Widgets/UserWidget";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -12,7 +15,7 @@ const Home = () => {
   return (
     <Box
       bgcolor={palette.background.default}
-      height={isNonMobileScreen ? "100vh" : "auto"}
+      // height={isNonMobileScreen ? "100vh" : "auto"}
     >
       <Navbar />
       <Box
@@ -30,8 +33,13 @@ const Home = () => {
           mt={isNonMobileScreen ? undefined : "2rem"}
         >
           <MyPostWidget picturePath={picturePath} />
+          <PostsWidget userId={_id} />
         </Box>
-        {isNonMobileScreen && <Box flexBasis={"26%"}></Box>}
+        {isNonMobileScreen && <Box flexBasis={"26%"}>
+          <AdvertisementWidget/>
+          <Box m={"2rem 0"}/>
+          <FriendListWidget userId={_id}/>
+        </Box>}
       </Box>
     </Box>
   );
