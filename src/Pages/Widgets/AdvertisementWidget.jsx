@@ -24,8 +24,10 @@ const AdvertisementWidget = () => {
         style={{ borderRadius: "0.75rem", margin: "0.75rem 0" }}
       />
       <FlexBetween>
-        <Typography color={light}>Mika Cosmetics</Typography>
-        <Typography color={medium}>micacosmetics</Typography>
+        <Typography color={dark} fontWeight={500}>Vine Cosmetics</Typography>
+        <Typography color={medium}>
+          <a target="_blank" href="www.vinecosmetics.com" style={{color: medium, textDecoration: "none"}}>vinecosmetics.com</a>
+        </Typography>
       </FlexBetween>
       <Typography color={medium} m={"0.5rem 0"}>
         Your path to stunning and immaculate beauty and made sure your skin is

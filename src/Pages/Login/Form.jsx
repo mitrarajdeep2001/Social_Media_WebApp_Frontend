@@ -207,11 +207,17 @@ const Form = () => {
                         >
                           <input {...getInputProps()} />
                           {!values.picture ? (
-                            <Typography color={palette.primary.main}>Add picture here</Typography>
+                            <Typography color={palette.primary.main}>
+                              Add picture here
+                            </Typography>
                           ) : (
                             <FlexBetween>
-                              <Typography color={palette.primary.main}>{values.picture.name}</Typography>
-                              <EditOutlined />
+                              <Typography color={palette.primary.main}>
+                                {values.picture.name}
+                              </Typography>
+                              <EditOutlined
+                                sx={{ color: palette.primary.main }}
+                              />
                             </FlexBetween>
                           )}
                         </Box>

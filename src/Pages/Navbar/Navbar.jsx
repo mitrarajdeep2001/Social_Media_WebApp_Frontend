@@ -56,7 +56,7 @@ const Navbar = () => {
           }}
           onClick={() => navigate("/home")}
         >
-          Sociopedia
+          SocioBook
         </Typography>
         {/* DESKTOP NAVBAR */}
         {isNonMobileScreens && (

@@ -14,7 +14,7 @@ const Login = () => {
         textAlign={"center"}
       >
         <Typography fontWeight={"bold"} fontSize={"32px"} color={"primary"}>
-          Sociopedia
+          SocioBook
         </Typography>
       </Box>
       <Box
@@ -27,6 +27,7 @@ const Login = () => {
         <Typography
           fontWeight={500}
           variant="h5"
+          color={theme.palette.primary.dark}
           sx={{ mb: "1.5rem", textAlign: "center" }}
         >
           Welcome to Sociopedia, the social media for Sociopaths!
