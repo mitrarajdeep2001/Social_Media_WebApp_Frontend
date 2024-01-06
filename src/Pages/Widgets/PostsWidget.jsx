@@ -7,7 +7,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts);
   const getPosts = async () => {
-    const response = await fetch(`http://localhost:3001/post`, {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/post`, {
       method: "GET",
       credentials: "include",
     });
@@ -15,7 +15,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
     dispatch(setPosts({ posts: data }));
   };
   const getUserPosts = async () => {
-    const response = await fetch(`http://localhost:3001/post/${userId}`, {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/post/${userId}`, {
       method: "GET",
       credentials: "include",
     });

@@ -32,7 +32,7 @@ const PostWidget = ({
   const main = palette.neutral.main;
   const primary = palette.primary.main;
   const patchLike = async () => {
-    const response = await fetch(`http://localhost:3001/post/${postId}/like`, {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/post/${postId}/like`, {
       method: "PATCH",
       credentials: "include",
       headers: {

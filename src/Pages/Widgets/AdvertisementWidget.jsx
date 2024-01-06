@@ -6,7 +6,6 @@ import sponsorImg from "../../Assets/sponsor_img.jpeg";
 const AdvertisementWidget = () => {
   const { palette } = useTheme();
   const dark = palette.neutral.dark;
-  const light = palette.neutral.light;
   const medium = palette.neutral.medium;
   return (
     <WidgetWrapper>
@@ -26,7 +25,7 @@ const AdvertisementWidget = () => {
       <FlexBetween>
         <Typography color={dark} fontWeight={500}>Vine Cosmetics</Typography>
         <Typography color={medium}>
-          <a target="_blank" href="www.vinecosmetics.com" style={{color: medium, textDecoration: "none"}}>vinecosmetics.com</a>
+          <a target="_blank" rel="noreferrer" href="https://www.vinecosmetics.com" style={{color: medium, textDecoration: "none"}}>vinecosmetics.com</a>
         </Typography>
       </FlexBetween>
       <Typography color={medium} m={"0.5rem 0"}>

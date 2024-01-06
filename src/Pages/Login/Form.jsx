@@ -58,6 +58,7 @@ const Form = () => {
   const isLogin = pageType === "login";
   const isRegister = pageType === "register";
 
+  //This function will handle user registration.
   const register = async (values, onSubmitProps) => {
     const formData = new FormData();
     for (let value in values) {
@@ -65,21 +66,21 @@ const Form = () => {
     }
     formData.append("picturePath", values.picture.name);
     const savedUserResponse = await fetch(
-      "http://localhost:3001/auth/register",
+      `${process.env.REACT_APP_BACKEND_BASE_URL}/auth/register`,
       {
         method: "POST",
         body: formData,
       }
     );
     const savedUser = await savedUserResponse.json();
-    console.log(savedUser);
     onSubmitProps.resetForm();
     if (savedUser) {
       setPageType("login");
     }
   };
+  //This function will handle user login.
   const login = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
+    const loggedInResponse = await fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/auth/login`, {
       method: "POST",
       credentials: "include",
       headers: {
@@ -90,20 +91,22 @@ const Form = () => {
     const loggedIn = await loggedInResponse.json();
     onSubmitProps.resetForm();
     if (loggedIn) {
+      //Update the user and token state in the redux store.
       dispatch(
         setLogin({
           user: loggedIn.user,
           token: loggedIn.user.tokens[loggedIn.user.tokens.length - 1],
         })
       );
-      navigate("/home");
+      navigate("/home"); //After login navigate the user to the home page.
     }
   };
+  //This function will be called when either register or login button is clicked.
   const handleFormSubmit = async (values, onSubmitProps) => {
-    if (isLogin) {
+    if (isLogin) { //Check if page type is "login".
       await login(values, onSubmitProps);
     }
-    if (isRegister) {
+    if (isRegister) { //Check if page type is "register".
       await register(values, onSubmitProps);
     }
   };

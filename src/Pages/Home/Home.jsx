@@ -15,7 +15,6 @@ const Home = () => {
   return (
     <Box
       bgcolor={palette.background.default}
-      // height={isNonMobileScreen ? "100vh" : "auto"}
     >
       <Navbar />
       <Box

@@ -9,7 +9,6 @@ import FlexBetween from "Components/FlexBetween";
 import UserImage from "Components/UserImage";
 import WidgetWrapper from "Components/WidgetWrapper";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import twitter from "../../Assets/twitter.png";
 import linkedin from "../../Assets/linkedin.png";
@@ -18,13 +17,12 @@ const UserWidget = ({ userId }) => {
   const [user, setUser] = useState(null);
   const { palette } = useTheme();
   const navigate = useNavigate();
-  const token = useSelector((state) => state.token);
   const dark = palette.neutral.dark;
   const medium = palette.neutral.medium;
   const main = palette.neutral.main;
 
   const getUser = async () => {
-    const response = await fetch(`http://localhost:3001/user/${userId}`, {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/user/${userId}`, {
       method: "GET",
       credentials: "include",
       headers: {

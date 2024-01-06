@@ -11,7 +11,7 @@ const FriendListWidget = ({ userId }) => {
   const { palette } = useTheme();
   const getFriends = async () => {
     const response = await fetch(
-      `http://localhost:3001/user/${userId}/friends`,
+      `${process.env.REACT_APP_BACKEND_BASE_URL}/user/${userId}/friends`,
       {
         method: "GET",
         credentials: "include",

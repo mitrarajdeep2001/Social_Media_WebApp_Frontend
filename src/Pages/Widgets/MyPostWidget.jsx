@@ -20,19 +20,16 @@ import {
 import FlexBetween from "Components/FlexBetween";
 import UserImage from "Components/UserImage";
 import WidgetWrapper from "Components/WidgetWrapper";
-import { setPosts } from "Redux-Toolkit/Slices/auth";
 import { useState } from "react";
 import Dropzone from "react-dropzone";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const MyPostWidget = ({ picturePath }) => {
-  const dispatch = useDispatch();
   const [isImage, setIsImage] = useState(false);
   const [image, setImage] = useState(null);
   const [post, setPost] = useState("");
   const { palette } = useTheme();
   const { _id } = useSelector((state) => state.user);
-  //   const token = useSelector((state) => state.token)
   const isNonMobileScreen = useMediaQuery("(min-width: 1000px)");
   const mediumMain = palette.neutral.mediumMain;
   const medium = palette.neutral.medium;
@@ -45,13 +42,12 @@ const MyPostWidget = ({ picturePath }) => {
       formData.append("picture", image);
       formData.append("picturePath", image.name);
     }
-    const response = await fetch("http://localhost:3001/post/create", {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/post/create`, {
       method: "POST",
       credentials: "include",
       body: formData,
     });
-    const posts = await response.json();
-    dispatch(setPosts({ posts }));
+    await response.json();
     setImage(null);
     setPost("");
   };
@@ -82,8 +78,8 @@ const MyPostWidget = ({ picturePath }) => {
           <Dropzone
             acceptedFiles=".jpg, .jpeg, .png"
             multiple={false}
-            onDrop={(acceptedFiles) => {
-              setImage(acceptedFiles[0]);
+            onDrop={(uploadedFile) => {
+              setImage(uploadedFile[0]);
             }}
           >
             {({ getRootProps, getInputProps }) => (

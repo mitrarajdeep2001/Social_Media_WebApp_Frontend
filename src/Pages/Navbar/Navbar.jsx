@@ -39,7 +39,6 @@ const Navbar = () => {
   const primaryLight = theme.palette.primary.light;
 
   const fullName = `${user.firstName} ${user.lastName}`;
-  // const fullName = `Rajdeep Mitra`;
   return (
     <FlexBetween padding={"1rem 6%"} backgroundColor={alt}>
       {/* LEFT NAVBAR STARTS */}
@@ -116,8 +115,8 @@ const Navbar = () => {
                 <Typography>{fullName}</Typography>
               </MenuItem>
               <MenuItem onClick={() => {
-                dispatch(setLogout())
-                navigate("/")
+                dispatch(setLogout()) //Update the user and token state in redux store
+                navigate("/") //Navigate the user to login page
               }}>Logout</MenuItem>
             </Select>
           </FormControl>
